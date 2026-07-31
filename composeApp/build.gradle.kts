@@ -12,24 +12,15 @@ val debugManagerAppVersion = "2.6.5"
 group = "com.stephen"
 version = debugManagerAppVersion
 
-kotlin{
-    listOf(
-        macosX64(),
-        macosArm64(),
-    ).forEach { macosTarget ->
-        macosTarget.binaries.framework {
-            baseName = "DebugManager"
-            isStatic = true
-        }
-    }
-
+kotlin {
+    // Desktop-only JVM target. Compose Multiplatform 1.11+ dropped macosX64;
+    // macOS/Windows/Linux packages are produced via compose.desktop (JVM), not K/N frameworks.
     jvm("desktop")
 
     sourceSets {
         val desktopMain by getting
 
         commonMain.dependencies {
-            implementation(kotlin("stdlib-jdk8"))
             implementation(libs.kotlin.coroutines)
             implementation(libs.kotlin.serialization)
             implementation(libs.navigation.compose)

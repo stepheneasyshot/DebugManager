@@ -15,13 +15,15 @@
 
 | 项 | 说明 |
 |---|---|
-| 形态 | Compose Multiplatform Desktop（JVM）应用 |
+| 形态 | Compose Multiplatform Desktop（**仅** `jvm("desktop")`）应用；跨平台安装包由 `compose.desktop` 打包，无 K/N apple 目标 |
 | 包名 | `com.stephen.debugmanager` |
 | 主类 | `com.stephen.debugmanager.MainKt` |
 | 职责 | Android 设备调试桌面端：ADB/scrcpy、应用/文件、命令、性能、AI 对话、主题与多语言 |
 | 非职责 | 不内嵌 AYA 服务端源码（在仓库 `server/`，独立 Gradle）；不引入第二套 DI/网络栈 |
 
-版本号：`composeApp/build.gradle.kts` → `debugManagerAppVersion`。
+应用版本号：`composeApp/build.gradle.kts` → `debugManagerAppVersion`。
+
+工具链版本（Kotlin / Compose / Gradle）见根 `gradle/libs.versions.toml` 与 `gradle/wrapper/gradle-wrapper.properties`；不在本文重复钉死次要补丁号，重大升级时同步根 [AGENTS.md](../../AGENTS.md) 技术栈表。
 
 ---
 

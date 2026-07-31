@@ -10,7 +10,11 @@
 | [docs/PLANNING.md](./docs/PLANNING.md) | 规划约束：按现有架构实现，禁止破坏边界 |
 | [docs/HARNESS.md](./docs/HARNESS.md) | Agent Harness：改前必读、改后检查并更新技术文档 |
 
-包名：`com.stephen.debugmanager`。当前版本见本模块 `build.gradle.kts` 的 `debugManagerAppVersion`。
+包名：`com.stephen.debugmanager`。应用版本见本模块 `build.gradle.kts` 的 `debugManagerAppVersion`。
+
+工具链（以 Version Catalog / Wrapper 为准）：Kotlin **2.2.21**、Compose Multiplatform **1.11.1**、Gradle **8.14**。
+
+KMP 仅保留 `jvm("desktop")`。Compose 1.11+ 已移除 `macosX64`；Win/macOS/Linux 安装包均由 `compose.desktop`（JVM）产出，不要再声明 Kotlin/Native `macos*` framework 目标。
 
 ## 职责
 
@@ -210,7 +214,7 @@ ui/
 ./gradlew :composeApp:packageDistributionForCurrentOS
 ```
 
-Windows 用 `gradlew.bat`。版本号只改本模块 `debugManagerAppVersion`。主类：`com.stephen.debugmanager.MainKt`。Targets：`jvm("desktop")` + macOS frameworks（打包）。
+Windows 用 `gradlew.bat`。版本号只改本模块 `debugManagerAppVersion`。主类：`com.stephen.debugmanager.MainKt`。KMP target：仅 `jvm("desktop")`；安装包由 `compose.desktop` 产出。
 
 AYA 服务端（一般不必动）在 `../server/`：
 

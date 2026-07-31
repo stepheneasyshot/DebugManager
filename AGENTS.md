@@ -14,14 +14,16 @@ DebugManager 是基于 **Compose Multiplatform Desktop** 的 Android 设备调�
 
 | 层 | 技术 |
 |---|---|
-| UI | Compose Multiplatform + Material3，自定义无边框窗口 |
-| 语言 | Kotlin 2.0.x（Version Catalog：`gradle/libs.versions.toml`） |
+| UI | Compose Multiplatform **1.11.1** + Material3，自定义无边框窗口 |
+| 语言 | Kotlin **2.2.21**（Version Catalog：`gradle/libs.versions.toml`） |
 | DI | Koin（`di/koinModules.kt`） |
 | 异步 | Kotlin Coroutines + StateFlow |
 | 网络 | Ktor Client（AI API） |
 | 持久化 | DataStore Preferences（主题 / 语言 / AI 模型选择） |
 | 设备侧 | 内置 adb/scrcpy；AYA Server（`aya.dex`）获取应用图标等信息 |
-| 构建 | Gradle Kotlin DSL，Compose Desktop 打包 Exe / Dmg / Deb |
+| 构建 | Gradle **8.14** + Kotlin DSL，Compose Desktop 打包 Exe / Dmg / Deb |
+
+工具链版本以 `gradle/libs.versions.toml`、`gradle/wrapper/gradle-wrapper.properties` 为准；升级后同步本表。
 
 ## 仓库结构
 
