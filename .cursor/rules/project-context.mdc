@@ -1,0 +1,30 @@
+---
+description: DebugManager project context for coding agents
+alwaysApply: true
+---
+
+# DebugManager
+
+Compose Multiplatform Desktop app for Android (esp. in-car) debugging via bundled adb/scrcpy.
+
+## Source of truth
+
+- Overview: root **AGENTS.md**
+- Module handbook: **composeApp/AGENTS.md**
+- **Architecture (required before composeApp code edits):** `composeApp/docs/ARCHITECTURE.md`
+- Planning: `composeApp/docs/PLANNING.md`
+- Harness (read-before-edit + doc sync after): `composeApp/docs/HARNESS.md`
+- User docs: **README.md**
+
+## composeApp harness (always)
+
+1. Before editing `composeApp/**` source: Read `composeApp/docs/ARCHITECTURE.md`
+2. Follow existing layers; do not break architecture invariants
+3. After edits: HARNESS H3 — update stale tech docs or state why no update is needed
+
+## Layout (short)
+
+- Orchestration: `MainStateHolder` — UI must not run raw adb
+- ADB/OS: `base/`; helpers: `helper/`; pages: `ui/pages/`
+- Routes: `data/Constants.kt`
+- `server/` is a separate AYA Gradle project

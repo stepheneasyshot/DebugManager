@@ -1,0 +1,28 @@
+---
+description: composeApp architecture constraints — preserve layered design
+globs: composeApp/**/*.kt
+alwaysApply: false
+---
+
+# composeApp Architecture
+
+Source of truth: `composeApp/docs/ARCHITECTURE.md`.
+
+## Dependency direction (top → bottom only)
+
+`ui` → `MainStateHolder` → (`base` | `helper` | `net`) → device/OS  
+`data` / `utils`: no Compose UI, no ADB, no process execution.
+
+## Must
+
+- New features: state/use-case in `MainStateHolder`; pages only bind UI
+- Routes only via `data/Constants.kt` `mainItemMap`
+- New deps via `gradle/libs.versions.toml` + `libs.*`
+- AYA protocol changes: sync desktop bean/helper with `server/`
+
+## Must not
+
+- UI calling `AdbClient` / `PlatformAdapter` directly
+- Second DI or HTTP stack replacing Koin / Ktor
+- Merging `server/` into composeApp
+- Weakening single-instance lock or undecorated window without explicit request

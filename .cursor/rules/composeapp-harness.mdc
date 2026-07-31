@@ -1,0 +1,20 @@
+---
+description: composeApp harness — read architecture before edits; sync docs after
+globs: composeApp/**
+alwaysApply: false
+---
+
+# composeApp Harness
+
+Full rules: `composeApp/docs/HARNESS.md`.
+
+## Before any code change under `composeApp/`
+
+1. **Read** `composeApp/docs/ARCHITECTURE.md` with the Read tool (required).
+2. For multi-file or design work, also **read** `composeApp/docs/PLANNING.md`.
+3. Implement only within existing layers; do not break ARCHITECTURE §7 invariants.
+4. Do not put adb/ProcessBuilder in `ui`; orchestrate via `MainStateHolder`.
+
+## After code changes under `composeApp/`
+
+Run the H3 checklist in `composeApp/docs/HARNESS.md`: update outdated tech docs (`ARCHITECTURE.md`, `PLANNING.md`, `composeApp/AGENTS.md`, root `AGENTS.md`, `README.md`, rules) or explicitly state that no doc update is needed and why.
